@@ -100,6 +100,14 @@ public class Order implements Serializable {
         this.payment = payment;
     }
 
+    public Double getTotal() {
+        Double total = items.stream()
+            .mapToDouble(x -> x.getSubTotal())
+            .sum();
+            
+        return total;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
